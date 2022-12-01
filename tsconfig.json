@@ -8,7 +8,7 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "types": ["vite/client", "node"],
+    "types": ["vite/client", "node", "react/next", "react-dom/next"],
     "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
