@@ -1,0 +1,14 @@
+.page {
+    display: flex;
+    width: 75%;
+    margin: auto;
+    padding-top: 90px;
+  
+    &__left-column {
+      width: 35%;
+    }
+    &__right-column {
+      width: 65%;
+      padding-left: 20px;
+    }
+  }

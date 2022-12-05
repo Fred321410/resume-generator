@@ -1,0 +1,25 @@
+@import '../../variables';
+
+.users-list {
+    &__title {
+        font-size: 24px;
+        color: $color-blue;
+    }
+    &__grid {
+        margin-top: 20px;
+        display: grid;
+        gap: 5px;
+        @media (min-width: 700px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media (min-width: 1000px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @media (min-width: 1300px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        @media (min-width: 1600px) {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+}

@@ -1,5 +1,12 @@
+@import '../../variables';
+
 .navbar {
-  padding-right: 16px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  margin-top: 35px;
 
   &__link {
     display: inline-block;
@@ -7,25 +14,22 @@
     vertical-align: middle;
 
     &__label {
-      margin: 10px;
+      min-height: 59px;
+      padding: 0.25rem 1rem;
+      margin-left: 15px;
       text-decoration: none;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 500;
+      border: 2px solid $secondary-color;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
       
       &:hover {
         cursor: pointer;
+        background-color: $secondary-color;
       }
       &--active {
-        color: red;
-  
-        &:after {
-          content: "";
-          position: absolute;
-          bottom: -26px;
-          left: 0;
-          width: 100%;
-          border-bottom: 3px solid red;
-        }
+        background-color: $secondary-color;
       }
     }
   }

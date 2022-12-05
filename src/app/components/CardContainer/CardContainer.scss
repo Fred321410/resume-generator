@@ -1,0 +1,28 @@
+@import '../../variables';
+
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: $secondary-color;
+    box-shadow: $background-color-container 5px 5px 0px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $background-color-darker;
+    }
+    &.hollow {
+        color: white;
+        background-color: $background-color-darker;
+        border: 2px solid;
+        border-color: $secondary-color;
+        box-shadow: none;
+
+        &:hover {
+            background-color: $secondary-color;
+        }
+    }
+}

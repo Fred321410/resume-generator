@@ -1,10 +1,13 @@
 import express from 'express';
 import router from './lib/router';
 import path from 'path';
+import cors from 'cors';
 
 const { PORT = 3001 } = process.env;
 
 const app = express();
+
+app.use(cors());
 
 // Middleware that parses json and looks at requests where the Content-Type header matches the type option.
 app.use(express.json());

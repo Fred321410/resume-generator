@@ -21,13 +21,15 @@ function Navbar(): JSX.Element {
 
   const Links = links.map(link => {
     return (
-      <div className='navbar__link'>
+      <div
+        className='navbar__link'
+        key={link.to}
+      >
         <NavLink 
           className={({ isActive }) =>
             isActive ? 'navbar__link__label' + ' ' + 'navbar__link__label--active' : 'navbar__link__label'
           }
           to={link.to}
-          key={link.to}
         >
           {link.label}
         </NavLink>

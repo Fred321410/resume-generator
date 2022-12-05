@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './globals.css';
-import App from './App';
+import './globals.scss';
+import Users from './pages/users/Users';
 import {
   createBrowserRouter,
   RouterProvider
@@ -15,11 +15,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <App />,
-      },
-      {
-        path: "/foo",
-        element: <App />,
+        element: <Users />,
       },
       {
         path: "/*",

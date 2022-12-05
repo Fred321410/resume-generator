@@ -1,11 +1,24 @@
-import React, { ReactNode } from 'react';
-import classes from './Button.module.css';
+import React from "react";
+import CardContainer from "../CardContainer/CardContainer";
+import './Button.scss';
 
-type ButtonProps = {
-  children: ReactNode;
-};
-function Button({ children }: ButtonProps): JSX.Element {
-  return <button className={classes.button}>{children}</button>;
+interface ButtonProps {
+    logo?: string,
+    label: string,
+    callback: (a: any) => any
+}
+
+function Button(props: ButtonProps): JSX.Element {
+    return (
+        <div onClick={props.callback}>
+            <CardContainer isHollow>
+                <div className='button' >
+                    <i className={`button__logo ${props.logo}`}></i>
+                    <div>{props.label}</div>
+                </div>
+            </CardContainer>
+        </div>
+    );
 }
 
 export default Button;
