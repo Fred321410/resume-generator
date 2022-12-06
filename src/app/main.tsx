@@ -7,6 +7,12 @@ import {
   RouterProvider
 } from 'react-router-dom';
 import Header from './components/Header/Header';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:3001/graphql',
+  cache: new InMemoryCache(),
+});
 
 const router = createBrowserRouter([
   {
@@ -30,6 +36,8 @@ if (!domContainer) throw new Error('Failed to find the root element');
 const root = ReactDOM.createRoot(domContainer);
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ApolloProvider client={client}>
+      <RouterProvider router={router} />
+    </ApolloProvider>
   </React.StrictMode>,
 );

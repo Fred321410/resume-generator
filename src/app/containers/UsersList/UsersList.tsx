@@ -1,23 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './UsersList.scss';
-import { getUsers, Users, addUser } from '../../services/users.services';
+import { Users } from '../../services/users.services';
 import CardContainer from '../../components/CardContainer/CardContainer';
 import Button from '../../components/Button/Button';
+import { useQuery, gql, useMutation } from '@apollo/client';
+
+const GET_USERS = gql`
+  query GetUsers {
+    users {
+      id
+      username
+    }
+  }
+`;
+
+const POST_USER = gql`
+  mutation AddUser($username: String) {
+    addUser(username: $username) {
+        id
+        username
+    }
+}
+`;
 
 function UsersList(): JSX.Element {
     
-    const [users, setUsers] = useState<Users[]>([]);
+    // const [users, setUsers] = useState<Users[]>([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const users = await getUsers();
-            setUsers(users);
-        };
-        
-        fetchData();
-    }, []);
+    const { loading, error, data } = useQuery(GET_USERS);
+    const [addUser] = useMutation(POST_USER, {
+        refetchQueries: [{query: GET_USERS}],
+      });
 
-    const UsersBoxes = users.map(user => {
+    if (loading) return <p>Loading ...</p>;
+    if (error) return <p>Eddor : {error.message}</p>
+
+    const UsersBoxes = data.users.map((user: Users) => {
         return (
           <CardContainer
             key={user.id}
@@ -28,8 +46,7 @@ function UsersList(): JSX.Element {
       });
 
     async function addUserCall() {
-        const result = await addUser({username: 'jkhuy'});
-        setUsers(prevData => [...prevData, result]);
+        addUser({ variables: { username: 'Billie' } });
     }
 
     return (
