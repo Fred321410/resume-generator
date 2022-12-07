@@ -10,10 +10,13 @@
     background-color: $secondary-color;
     box-shadow: $background-color-container 5px 5px 0px;
 
-    &:hover {
-        cursor: pointer;
-        background-color: $background-color-darker;
+    &:not(.disabled) {
+        &:hover {
+            cursor: pointer;
+            background-color: $background-color-darker;
+        }
     }
+
     &.hollow {
         color: white;
         background-color: $background-color-darker;
@@ -21,8 +24,11 @@
         border-color: $secondary-color;
         box-shadow: none;
 
-        &:hover {
+        &:hover:not(.disabled) {
             background-color: $secondary-color;
         }
+    }
+    &.disabled {
+        opacity: 50%;
     }
 }

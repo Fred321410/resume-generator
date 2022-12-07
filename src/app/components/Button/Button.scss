@@ -1,3 +1,8 @@
+.button-container {
+    &:hover {
+        cursor: not-allowed;
+    }
+}
 .button {
     display: flex;
     align-items: center;

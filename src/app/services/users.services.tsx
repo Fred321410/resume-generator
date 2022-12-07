@@ -1,4 +1,4 @@
-import { API_ROOT } from "../constantes";
+import { gql } from '@apollo/client';
 import { get, post } from './utils';
 const LOCAL_API = 'users'
 
@@ -7,7 +7,7 @@ export interface Users extends UsersNoId {
 };
 
 export interface UsersNoId {
-    username: String
+    username: string
 };
 
 async function getUsers(): Promise<Users[]> {
@@ -20,7 +20,27 @@ async function addUser(user: UsersNoId): Promise<Users> {
     return data;
 }
 
+const POST_USER = gql`
+  mutation AddUser($username: String) {
+    addUser(username: $username) {
+        id
+        username
+    }
+}
+`;
+
+const GET_USERS = gql`
+  query GetUsers {
+    users {
+      id
+      username
+    }
+  }
+`;
+
 export {
     getUsers,
-    addUser
+    addUser,
+    POST_USER,
+    GET_USERS
 };
