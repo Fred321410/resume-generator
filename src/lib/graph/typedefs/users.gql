@@ -9,4 +9,5 @@ type Query {
 
 type Mutation {
   addUser(username: String): User
+  deleteUser(id: Int): Int
 }

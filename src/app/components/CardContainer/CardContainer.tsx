@@ -4,14 +4,14 @@ import './CardContainer.scss';
 
 interface CardContainerProps extends HTMLAttributes<HTMLDivElement> {
     isHollow?: boolean,
-    isDisabled?: boolean
+    isDisabled?: boolean,
 }
 
-const CardContainer = ({isHollow, isDisabled, children, ...htmlProps}: CardContainerProps) => {
+const CardContainer = ({className, isHollow, isDisabled, children, ...htmlProps}: CardContainerProps) => {
     const classes = classNames('card-container', {
         'hollow': isHollow,
         'disabled': isDisabled
-    })
+    }, className)
     return (
         <div className={classes} {...htmlProps}>
             {children}

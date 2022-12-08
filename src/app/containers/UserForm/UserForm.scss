@@ -6,4 +6,21 @@
     &__title {
         font-size: 18px;
     }
+    &__form {
+        &__row {
+            display: flex;
+            margin-top: 5px;
+
+            label {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                input {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from '../../components/Button/Button';
 import { Users, UsersNoId } from '../../services/users.services';
 import './UserForm.scss';
 
@@ -30,12 +31,19 @@ const UserForm = ({selectedUser, submitUser}: UserFormProps) => {
           <div className='user-form__title'>
           {(selectedUser as Users).id ? 'Update' : 'Insert'}
           </div>
-          <form onSubmit={handleSubmit}>
-            <label>
-              Username:
-              <input type="text" name="username" value={user.username} onChange={handleChange}/>
-            </label>
-            <input type="submit" value="Submit" />
+          <form onSubmit={handleSubmit} className='user-form__form'>
+            <div className='user-form__form__row'>
+              <label>
+                Username:
+                <input type="text" name="username" value={user.username} onChange={handleChange}/>
+              </label>
+            </div>
+            <div className='user-form__form__row'>
+              <Button
+                logo='plus'
+                label='Submit'
+                callback={handleSubmit}/>
+            </div>
           </form>
       </div>
   );

@@ -5,13 +5,14 @@ import ContentContainer from '../../components/ContentContainer/ContentContainer
 import Page from '../../containers/Page/Page';
 import UserForm from '../../containers/UserForm/UserForm';
 import UsersList from '../../containers/UsersList/UsersList';
-import { GET_USERS, POST_USER, Users, UsersNoId } from '../../services/users.services'
+import { GET_USERS, POST_USER, DELETE_USER, Users, UsersNoId, isUser } from '../../services/users.services'
 import './Users.scss'
 
 const Users = () => {
 
     const [selectedUsers, setSelectedUsers] = useState<Users | UsersNoId | null>(null);
     const [addUser] = useMutation(POST_USER, {refetchQueries: [{query: GET_USERS}],});
+    const [deleteUser] = useMutation(DELETE_USER, {refetchQueries: [{query: GET_USERS}],});
 
     const addUserCall = () => {
         setSelectedUsers({
@@ -20,12 +21,16 @@ const Users = () => {
     }
 
     const insertOrUpdate = (user: Users | UsersNoId) => {
-        console.log(user);
         addUser({ variables: { username: user.username } });
         setSelectedUsers(null);
     }
 
-    const deleteUser = () => setSelectedUsers(null);
+    const remove = () => {
+        if (isUser(selectedUsers)) {
+            deleteUser({ variables: { id: selectedUsers.id } });
+        }
+        setSelectedUsers(null);
+    }
 
     return (
         <Page
@@ -40,8 +45,7 @@ const Users = () => {
                             <Button
                                 logo={selectedUsers ? 'trash' : 'plus'}
                                 label={selectedUsers ? 'Delete User' : 'Add User'}
-                                isDisabled={!!selectedUsers}
-                                callback={addUserCall}/>
+                                callback={selectedUsers ? remove : addUserCall}/>
                         </div>
                     </div>
                     {selectedUsers ? <UserForm selectedUser={selectedUsers} submitUser={insertOrUpdate} /> : ''}

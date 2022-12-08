@@ -6,6 +6,7 @@ const Query = {
 
 const Mutation = {
   addUser: postUser,
+  deleteUser: deleteUser,
 }
 
 module.exports = { Query, Mutation }
@@ -21,4 +22,8 @@ async function postUser(_: any, data: any) {
   const users = await knex('users').insert({username: data.username}).returning('*');
   const user = users[0];
   return user;
+}
+
+async function deleteUser(_: any, data: any) {
+  await knex('users').where({id: data.id}).del();
 }

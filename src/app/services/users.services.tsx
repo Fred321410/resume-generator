@@ -10,6 +10,11 @@ export interface UsersNoId {
     username: string
 };
 
+const isUser = (user: Users | UsersNoId | null): user is Users => {
+  if (!user) return false;
+  return (user as Users).id !== undefined;
+}
+
 async function getUsers(): Promise<Users[]> {
     const data = await get(LOCAL_API);
     return data;
@@ -29,6 +34,12 @@ const POST_USER = gql`
 }
 `;
 
+const DELETE_USER = gql`
+  mutation DeleteUser($id: Int) {
+    deleteUser(id: $id)
+}
+`;
+
 const GET_USERS = gql`
   query GetUsers {
     users {
@@ -42,5 +53,7 @@ export {
     getUsers,
     addUser,
     POST_USER,
-    GET_USERS
+    GET_USERS,
+    DELETE_USER,
+    isUser
 };
