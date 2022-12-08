@@ -5,7 +5,7 @@ import './Header.scss';
 import logo from '../../logo.svg';
 
 
-function Header(): JSX.Element {
+const Header = () => {
   return (
     <>
       <header className='header'>

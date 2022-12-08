@@ -1,24 +1,24 @@
 import React from "react";
 import CardContainer from "../CardContainer/CardContainer";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import './Button.scss';
 
 interface ButtonProps {
-    logo?: string,
+    logo: IconProp,
     label: string,
     isDisabled?: boolean
     callback: (a: any) => any
 }
 
-function Button(props: ButtonProps): JSX.Element {
+const Button = ({logo, isDisabled, label, callback}: ButtonProps) => {
     return (
-        <div onClick={!props.isDisabled ? props.callback : () => {}}>
-            <CardContainer isHollow isDisabled={props.isDisabled}>
-                <div className='button'>
-                    <i className={`button__logo ${props.logo}`}></i>
-                    <div>{props.label}</div>
-                </div>
-            </CardContainer>
-        </div>
+        <CardContainer isHollow isDisabled={isDisabled} onClick={!isDisabled ? callback : () => {}} >
+            <div className='button'>
+                <FontAwesomeIcon icon={logo} className="button__logo" />
+                <div>{label}</div>
+            </div>
+        </CardContainer>
     );
 }
 

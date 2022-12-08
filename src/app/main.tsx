@@ -8,6 +8,10 @@ import {
 } from 'react-router-dom';
 import Header from './components/Header/Header';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fas);
 
 const client = new ApolloClient({
   uri: 'http://localhost:3001/graphql',

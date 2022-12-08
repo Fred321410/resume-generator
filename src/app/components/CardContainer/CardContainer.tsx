@@ -1,16 +1,20 @@
-import React from "react";
+import classNames from "classnames";
+import React, { HTMLAttributes } from "react";
 import './CardContainer.scss';
 
-interface CardContainerProps {
+interface CardContainerProps extends HTMLAttributes<HTMLDivElement> {
     isHollow?: boolean,
-    isDisabled?: boolean,
-    children: React.ReactNode
+    isDisabled?: boolean
 }
 
-function CardContainer(props: CardContainerProps): JSX.Element {
+const CardContainer = ({isHollow, isDisabled, children, ...htmlProps}: CardContainerProps) => {
+    const classes = classNames('card-container', {
+        'hollow': isHollow,
+        'disabled': isDisabled
+    })
     return (
-        <div className={`card-container ${props.isHollow ? 'hollow' : ''} ${props.isDisabled ? 'disabled' : ''}`}>
-            {props.children}
+        <div className={classes} {...htmlProps}>
+            {children}
         </div>
     );
 }

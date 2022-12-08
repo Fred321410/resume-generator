@@ -8,20 +8,18 @@ interface UsersListProps {
   setUsers: (user: Users) => void,
 }
 
-function UsersList(props: UsersListProps): JSX.Element {
+const UsersList = ({setUsers}: UsersListProps) => {
 
     const { loading, error, data } = useQuery(GET_USERS);
 
     if (loading) return <p>Loading ...</p>;
-    if (error) return <p>Eddor : {error.message}</p>
+    if (error) return <p>Error : {error.message}</p>
 
     const UsersBoxes = data.users.map((user: Users) => {
         return (
-          <div onClick={() => props.setUsers(user)} key={user.id}>
-            <CardContainer>
-              {user.username}
-            </CardContainer>
-          </div>
+          <CardContainer onClick={() => setUsers(user)} key={user.id}>
+            {user.username}
+          </CardContainer>
         );
       });
 

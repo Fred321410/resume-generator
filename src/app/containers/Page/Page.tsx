@@ -6,14 +6,14 @@ interface PageProps {
     right: React.ReactNode
 }
 
-function Page(props: PageProps): JSX.Element {
+const Page = ({left, right}: PageProps) => {
     return (
         <div className="page">
             <div className='page__left-column'>
-                {props.left}
+                {left}
             </div>
             <div className='page__right-column'>
-                {props.right}
+                {right}
             </div>
         </div>
     );

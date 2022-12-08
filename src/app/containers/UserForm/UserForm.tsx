@@ -7,10 +7,10 @@ interface UserFormProps {
   submitUser: (a: Users | UsersNoId) => any
 }
 
-function UserForm(props: UserFormProps): JSX.Element {
-  const [user, setUser] = useState(props.selectedUser);
+const UserForm = ({selectedUser, submitUser}: UserFormProps) => {
+  const [user, setUser] = useState(selectedUser);
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {name, value} = event.target
     setUser(prevFormData => {
         return {
@@ -22,13 +22,13 @@ function UserForm(props: UserFormProps): JSX.Element {
 
   const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    props.submitUser(user);
+    submitUser(user);
   };
 
   return (
       <div className='user-form'>
           <div className='user-form__title'>
-          {(props.selectedUser as Users).id ? 'Update' : 'Insert'}
+          {(selectedUser as Users).id ? 'Update' : 'Insert'}
           </div>
           <form onSubmit={handleSubmit}>
             <label>

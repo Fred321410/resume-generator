@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.scss'
 
-function Navbar(): JSX.Element {
+const Navbar = () => {
 
   const links = [
     {

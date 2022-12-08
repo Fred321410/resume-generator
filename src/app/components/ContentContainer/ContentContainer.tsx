@@ -1,16 +1,15 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import './ContentContainer.scss';
 
-interface ContentContainerProps {
-    title: string,
-    children: React.ReactNode
+interface ContentContainerProps extends HTMLAttributes<HTMLDivElement> {
+    title: string
 }
 
-function ContentContainer(props: ContentContainerProps): JSX.Element {
+const ContentContainer = ({title, children}: ContentContainerProps) => {
     return (
         <div className="content-container">
-            <div className="content-container__title">{props.title}</div>
-            {props.children}
+            <div className="content-container__title">{title}</div>
+            {children}
         </div>
     );
 }
