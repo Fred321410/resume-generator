@@ -12,14 +12,14 @@ interface ButtonProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Button = ({logo, isDisabled, label, callback, className}: ButtonProps) => {
-    return (
-        <CardContainer className={className} isHollow isDisabled={isDisabled} onClick={!isDisabled ? callback : () => {}} >
-            <div className='button'>
-                <FontAwesomeIcon icon={logo} className="button__logo" />
-                <div>{label}</div>
-            </div>
-        </CardContainer>
-    );
+  return (
+    <CardContainer className={className} isHollow isDisabled={isDisabled} onClick={!isDisabled ? callback : () => {}} >
+      <div className='button'>
+        <FontAwesomeIcon icon={logo} className="button__logo" />
+        <div>{label}</div>
+      </div>
+    </CardContainer>
+  );
 }
 
 export default Button;

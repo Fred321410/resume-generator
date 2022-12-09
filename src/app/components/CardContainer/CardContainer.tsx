@@ -8,15 +8,15 @@ interface CardContainerProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const CardContainer = ({className, isHollow, isDisabled, children, ...htmlProps}: CardContainerProps) => {
-    const classes = classNames('card-container', {
-        'hollow': isHollow,
-        'disabled': isDisabled
-    }, className)
-    return (
-        <div className={classes} {...htmlProps}>
-            {children}
-        </div>
-    );
+  const classes = classNames('card-container', {
+    'hollow': isHollow,
+    'disabled': isDisabled
+  }, className)
+  return (
+    <div className={classes} {...htmlProps}>
+      {children}
+    </div>
+  );
 }
 
 export default CardContainer;

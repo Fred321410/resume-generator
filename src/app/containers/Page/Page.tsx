@@ -7,16 +7,16 @@ interface PageProps {
 }
 
 const Page = ({left, right}: PageProps) => {
-    return (
-        <div className="page">
-            <div className='page__left-column'>
-                {left}
-            </div>
-            <div className='page__right-column'>
-                {right}
-            </div>
-        </div>
-    );
+  return (
+    <div className="page">
+      <div className='page__left-column'>
+        {left}
+      </div>
+      <div className='page__right-column'>
+        {right}
+      </div>
+    </div>
+  );
 }
 
 export default Page;

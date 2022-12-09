@@ -11,7 +11,9 @@
     "serve": "vite preview",
     "prepare": "husky install",
     "test": "tsc && prettier --check . && eslint . && stylelint \"**/*.css\"",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix --ext .js,.jsx,.tsx ."
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",

@@ -16,13 +16,13 @@ const isUser = (user: Users | UsersNoId | null): user is Users => {
 }
 
 async function getUsers(): Promise<Users[]> {
-    const data = await get(LOCAL_API);
-    return data;
+  const data = await get(LOCAL_API);
+  return data;
 }
 
 async function addUser(user: UsersNoId): Promise<Users> {
-    const data = await post(LOCAL_API, user);
-    return data;
+  const data = await post(LOCAL_API, user);
+  return data;
 }
 
 const POST_USER = gql`
@@ -50,10 +50,10 @@ const GET_USERS = gql`
 `;
 
 export {
-    getUsers,
-    addUser,
-    POST_USER,
-    GET_USERS,
-    DELETE_USER,
-    isUser
+  getUsers,
+  addUser,
+  POST_USER,
+  GET_USERS,
+  DELETE_USER,
+  isUser
 };
