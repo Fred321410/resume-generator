@@ -9,6 +9,12 @@
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0);
 
+    &:has(label > input:not(:focus):not(:placeholder-shown):invalid) {
+        border: 2px solid red;
+    }
+    &:has(label > input:invalid) {
+        border: 2px solid orange;
+    }
     input {
         width: 100px;
         outline-width: 0px;

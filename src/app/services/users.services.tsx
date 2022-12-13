@@ -8,6 +8,9 @@ export interface Users extends Omit<UsersNoId, 'id'> {
 
 export interface UsersNoId {
   username: string;
+  birthdate: Date;
+  telephone: string;
+  email: string;
   id?: undefined;
 }
 
@@ -31,6 +34,9 @@ const POST_USER = gql`
     addUser(user: $user) {
       id
       username
+      birthdate
+      telephone
+      email
     }
   }
 `;
@@ -46,6 +52,9 @@ const GET_USERS = gql`
     users {
       id
       username
+      birthdate
+      telephone
+      email
     }
   }
 `;

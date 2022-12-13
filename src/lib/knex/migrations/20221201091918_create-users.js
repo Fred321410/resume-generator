@@ -8,8 +8,8 @@ exports.up = function(knex) {
     tbl.increments();
     tbl.text('username', 128).unique().notNullable();
     tbl.text('email', 128).notNullable();
-    tbl.date('birthdate', 128).notNullable();
-    tbl.text('telephone', 128).notNullable();
+    tbl.date('birthdate').notNullable();
+    tbl.text('telephone', 10).notNullable();
   });
 };
 
@@ -18,5 +18,5 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  return knex.dropTableIfExists('users');
+  return knex.schema.dropTableIfExists('users');
 };

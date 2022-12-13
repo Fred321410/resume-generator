@@ -11,6 +11,7 @@ interface UserFormProps {
 
 const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
   const [user, setUser] = useState(selectedUser);
+  const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => setUser(selectedUser), [selectedUser]);
 
@@ -29,6 +30,12 @@ const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
     submitUser(user);
   };
 
+  useEffect(() => {
+    setIsFormValid(
+      !!user.username && !!user.telephone && !!user.email && !!user.birthdate
+    );
+  }, [user]);
+
   return (
     <div className="user-form">
       <div className="user-form__title">
@@ -42,10 +49,45 @@ const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
             label={'Username'}
             value={user.username}
             onChange={handleChange}
+            required
+          />
+          <Input
+            type={'tel'}
+            name={'telephone'}
+            label={'Telephone'}
+            placeholder={'0123456789'}
+            value={user.telephone}
+            onChange={handleChange}
+            pattern="[0-9]{10}"
           />
         </div>
         <div className="user-form__form__row">
-          <Button logo="plus" label="Submit" onClick={handleSubmit} />
+          <Input
+            type={'email'}
+            name={'email'}
+            label={'Email'}
+            value={user.email}
+            onChange={handleChange}
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          />
+        </div>
+        <div className="user-form__form__row">
+          <Input
+            type={'date'}
+            name={'birthdate'}
+            label={'Birthdate'}
+            value={user.birthdate}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="user-form__form__row">
+          <Button
+            isDisabled={!isFormValid}
+            logo="plus"
+            label="Submit"
+            onClick={handleSubmit}
+          />
         </div>
       </form>
     </div>

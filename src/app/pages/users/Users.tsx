@@ -31,6 +31,9 @@ const Users = () => {
   const addUserCall = () => {
     setSelectedUsers({
       username: '',
+      telephone: '',
+      email: '',
+      birthdate: new Date(),
     });
   };
 

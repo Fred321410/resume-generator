@@ -1,11 +1,19 @@
+scalar Date
+
 type User {
   id: Int,
   username: String
+  email: String
+  telephone: String
+  birthdate: Date
 }
 
 input UserInput {
   id: Int,
   username: String!
+  email: String!
+  telephone: String!
+  birthdate: Date!
 }
 
 type Query {

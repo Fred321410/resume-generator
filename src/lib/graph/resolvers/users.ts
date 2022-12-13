@@ -21,9 +21,9 @@ async function getUsers() {
 async function postUser(_: any, data: any) {
   let users;
   if (data.user.id) {
-    users = await knex('users').where({id: data.user.id}).update({username: data.user.username}).returning('*');
+    users = await knex('users').where({id: data.user.id}).update(data.user).returning('*');
   } else {
-    users = await knex('users').insert({username: data.user.username}).returning('*');
+    users = await knex('users').insert(data.user).returning('*');
   }
   const user = users[0];
   return user;
