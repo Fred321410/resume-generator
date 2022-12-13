@@ -1,0 +1,13 @@
+.resumes {
+    &__header {
+        margin-left: 20px;
+
+        &__title {
+            font-style: italic;
+        }
+        &__button {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

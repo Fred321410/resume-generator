@@ -3,11 +3,16 @@ type User {
   username: String
 }
 
+input UserInput {
+  id: Int,
+  username: String!
+}
+
 type Query {
   users: [User!]!
 }
 
 type Mutation {
-  addUser(username: String): User
+  addUser(user: UserInput): User
   deleteUser(id: Int): Int
 }

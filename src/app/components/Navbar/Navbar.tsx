@@ -1,33 +1,27 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './Navbar.scss'
+import './Navbar.scss';
 
 const Navbar = () => {
-
   const links = [
     {
       to: '/',
-      label: 'Home'
+      label: 'Users',
     },
     {
-      to: '/foo',
-      label: 'Foo'
+      to: '/resumes',
+      label: 'Resumes',
     },
-    {
-      to: '/bar',
-      label: 'Bar'
-    }
   ];
 
-  const Links = links.map(link => {
+  const Links = links.map((link) => {
     return (
-      <div
-        className='navbar__link'
-        key={link.to}
-      >
-        <NavLink 
+      <div className="navbar__link" key={link.to}>
+        <NavLink
           className={({ isActive }) =>
-            isActive ? 'navbar__link__label' + ' ' + 'navbar__link__label--active' : 'navbar__link__label'
+            isActive
+              ? 'navbar__link__label' + ' ' + 'navbar__link__label--active'
+              : 'navbar__link__label'
           }
           to={link.to}
         >
@@ -37,11 +31,7 @@ const Navbar = () => {
     );
   });
 
-  return (
-    <div className='navbar'>
-      {Links}
-    </div>
-  );
-}
+  return <div className="navbar">{Links}</div>;
+};
 
 export default Navbar;

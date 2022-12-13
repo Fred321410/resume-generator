@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../../components/Button/Button';
+import Input from '../../components/Input/Input';
 import { Users, UsersNoId } from '../../services/users.services';
 import './UserForm.scss';
 
 interface UserFormProps {
   selectedUser: Users | UsersNoId;
-  submitUser: (a: Users | UsersNoId) => any;
+  submitUser: (a: Users | UsersNoId) => unknown;
 }
 
 const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
   const [user, setUser] = useState(selectedUser);
+
+  useEffect(() => setUser(selectedUser), [selectedUser]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -21,7 +24,7 @@ const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
     });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.MouseEvent | React.FormEvent) => {
     event.preventDefault();
     submitUser(user);
   };
@@ -31,20 +34,18 @@ const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
       <div className="user-form__title">
         {(selectedUser as Users).id ? 'Update' : 'Insert'}
       </div>
-      <form onSubmit={handleSubmit} className="user-form__form">
+      <form className="user-form__form">
         <div className="user-form__form__row">
-          <label>
-            Username:
-            <input
-              type="text"
-              name="username"
-              value={user.username}
-              onChange={handleChange}
-            />
-          </label>
+          <Input
+            type={'text'}
+            name={'username'}
+            label={'Username'}
+            value={user.username}
+            onChange={handleChange}
+          />
         </div>
         <div className="user-form__form__row">
-          <Button logo="plus" label="Submit" callback={handleSubmit} />
+          <Button logo="plus" label="Submit" onClick={handleSubmit} />
         </div>
       </form>
     </div>

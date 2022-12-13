@@ -19,7 +19,12 @@ async function getUsers() {
 }
 
 async function postUser(_: any, data: any) {
-  const users = await knex('users').insert({username: data.username}).returning('*');
+  let users;
+  if (data.user.id) {
+    users = await knex('users').where({id: data.user.id}).update({username: data.user.username}).returning('*');
+  } else {
+    users = await knex('users').insert({username: data.user.username}).returning('*');
+  }
   const user = users[0];
   return user;
 }
