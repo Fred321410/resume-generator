@@ -33,7 +33,7 @@ const Users = () => {
       username: '',
       telephone: '',
       email: '',
-      birthdate: new Date(),
+      birthdate: '',
     });
   };
 

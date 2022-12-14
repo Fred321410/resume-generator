@@ -12,6 +12,12 @@ interface UserFormProps {
 const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
   const [user, setUser] = useState(selectedUser);
   const [isFormValid, setIsFormValid] = useState(false);
+  const [formError, setFormError] = useState({
+    username: true,
+    telephone: true,
+    email: true,
+    birthdate: true,
+  });
 
   useEffect(() => setUser(selectedUser), [selectedUser]);
 
@@ -25,14 +31,43 @@ const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
     });
   };
 
+  const isUsernameInvalid = (username: string) => {
+    return !username || !username.length;
+  };
+
+  const isEmailInvalid = (email: string) => {
+    return (
+      !email ||
+      !email.length ||
+      !email.match('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')
+    );
+  };
+
+  const isTelephoneInvalid = (telephone: string) => {
+    return !telephone || !telephone.length || !telephone.match('^[0-9]{10}$');
+  };
+
+  const isBirthdateInvalid = (birthdate: string) => {
+    return !birthdate;
+  };
+
   const handleSubmit = (event: React.MouseEvent | React.FormEvent) => {
     event.preventDefault();
     submitUser(user);
   };
 
   useEffect(() => {
+    setFormError({
+      username: isUsernameInvalid(user.username),
+      email: isEmailInvalid(user.email),
+      telephone: isTelephoneInvalid(user.telephone),
+      birthdate: isBirthdateInvalid(user.birthdate),
+    });
     setIsFormValid(
-      !!user.username && !!user.telephone && !!user.email && !!user.birthdate
+      !formError.username &&
+        !formError.birthdate &&
+        !formError.telephone &&
+        !formError.email
     );
   }, [user]);
 
@@ -49,7 +84,7 @@ const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
             label={'Username'}
             value={user.username}
             onChange={handleChange}
-            required
+            isValid={!formError.username}
           />
           <Input
             type={'tel'}
@@ -59,6 +94,7 @@ const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
             value={user.telephone}
             onChange={handleChange}
             pattern="[0-9]{10}"
+            isValid={!formError.telephone}
           />
         </div>
         <div className="user-form__form__row">
@@ -69,6 +105,7 @@ const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
             value={user.email}
             onChange={handleChange}
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            isValid={!formError.email}
           />
         </div>
         <div className="user-form__form__row">
@@ -78,7 +115,7 @@ const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
             label={'Birthdate'}
             value={user.birthdate}
             onChange={handleChange}
-            required
+            isValid={!formError.birthdate}
           />
         </div>
         <div className="user-form__form__row">

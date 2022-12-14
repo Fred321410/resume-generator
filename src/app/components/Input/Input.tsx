@@ -9,6 +9,7 @@ interface InputProps extends HTMLAttributes<HTMLDivElement> {
   placeholder?: string;
   pattern?: string;
   required?: boolean;
+  isValid?: boolean;
 }
 
 const Input = ({
@@ -20,6 +21,7 @@ const Input = ({
   pattern,
   required,
   onChange,
+  isValid = true,
 }: InputProps) => {
   return (
     <div className="input">
@@ -27,16 +29,18 @@ const Input = ({
         {label}
         {pattern ? (
           <input
+            className={isValid ? '' : 'invalid'}
             placeholder={placeholder ? placeholder : label}
             type={type}
             name={name}
             value={value}
             onChange={onChange}
             pattern={pattern}
-            required
+            required={required}
           />
         ) : (
           <input
+            className={isValid ? '' : 'invalid'}
             placeholder={placeholder ? placeholder : label}
             type={type}
             name={name}

@@ -8,7 +8,7 @@ export interface Users extends Omit<UsersNoId, 'id'> {
 
 export interface UsersNoId {
   username: string;
-  birthdate: Date;
+  birthdate: string;
   telephone: string;
   email: string;
   id?: undefined;
