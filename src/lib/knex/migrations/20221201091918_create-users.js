@@ -10,6 +10,8 @@ exports.up = function(knex) {
     tbl.text('email', 128).notNullable();
     tbl.date('birthdate').notNullable();
     tbl.text('telephone', 10).notNullable();
+    tbl.text('adresse', 128).notNullable();
+    tbl.text('city', 128).notNullable();
   });
 };
 

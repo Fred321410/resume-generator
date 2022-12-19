@@ -24,6 +24,12 @@ async function postUser(_: any, data: any) {
     users = await knex('users').where({id: data.user.id}).update(data.user).returning('*');
   } else {
     users = await knex('users').insert(data.user).returning('*');
+    await knex('resumes').insert({
+      title: '',
+      subtitle: '',
+      goals: '',
+      userId: users[0].id
+    });
   }
   const user = users[0];
   return user;

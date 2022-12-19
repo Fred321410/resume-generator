@@ -11,6 +11,8 @@ export interface UsersNoId {
   birthdate: string;
   telephone: string;
   email: string;
+  adresse: string;
+  city: string;
   id?: undefined;
 }
 
@@ -37,6 +39,8 @@ const POST_USER = gql`
       birthdate
       telephone
       email
+      adresse
+      city
     }
   }
 `;
@@ -55,6 +59,8 @@ const GET_USERS = gql`
       birthdate
       telephone
       email
+      adresse
+      city
     }
   }
 `;

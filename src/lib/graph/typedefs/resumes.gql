@@ -1,0 +1,18 @@
+type Resume {
+  id: Int,
+  title: String
+  subtitle: String
+  goals: String
+  userId: Int
+}
+
+input ResumeInput {
+  id: Int,
+  title: String
+  subtitle: String
+  goals: String
+}
+
+type Query {
+  resumes(userId: Int): [Resume]
+}

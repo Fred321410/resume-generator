@@ -17,6 +17,8 @@ const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
     telephone: true,
     email: true,
     birthdate: true,
+    city: true,
+    adresse: true,
   });
 
   useEffect(() => setUser(selectedUser), [selectedUser]);
@@ -51,6 +53,14 @@ const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
     return !birthdate;
   };
 
+  const isAdresseInvalid = (adresse: string) => {
+    return !adresse || !adresse.length;
+  };
+
+  const isCityInvalid = (city: string) => {
+    return !city || !city.length;
+  };
+
   const handleSubmit = (event: React.MouseEvent | React.FormEvent) => {
     event.preventDefault();
     submitUser(user);
@@ -62,12 +72,16 @@ const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
       email: isEmailInvalid(user.email),
       telephone: isTelephoneInvalid(user.telephone),
       birthdate: isBirthdateInvalid(user.birthdate),
+      adresse: isAdresseInvalid(user.adresse),
+      city: isCityInvalid(user.city),
     });
     setIsFormValid(
       !formError.username &&
         !formError.birthdate &&
         !formError.telephone &&
-        !formError.email
+        !formError.email &&
+        !formError.city &&
+        !formError.adresse
     );
   }, [user]);
 
@@ -116,6 +130,26 @@ const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {
             value={user.birthdate}
             onChange={handleChange}
             isValid={!formError.birthdate}
+          />
+        </div>
+        <div className="user-form__form__row">
+          <Input
+            type={'text'}
+            name={'adresse'}
+            label={'Adresse'}
+            value={user.adresse}
+            onChange={handleChange}
+            isValid={!formError.adresse}
+          />
+        </div>
+        <div className="user-form__form__row">
+          <Input
+            type={'text'}
+            name={'city'}
+            label={'City'}
+            value={user.city}
+            onChange={handleChange}
+            isValid={!formError.city}
           />
         </div>
         <div className="user-form__form__row">

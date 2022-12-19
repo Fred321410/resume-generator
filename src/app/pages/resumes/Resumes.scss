@@ -1,13 +1,21 @@
 .resumes {
-    &__header {
-        margin-left: 20px;
-
-        &__title {
-            font-style: italic;
-        }
-        &__button {
+    &__form {
+        &__row {
             display: flex;
-            justify-content: center;
+            margin-top: 5px;
+
+            label {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                input {
+                    width: 100%;
+                }
+            }
+            .input {
+                width: 100%;
+            }
         }
     }
 }

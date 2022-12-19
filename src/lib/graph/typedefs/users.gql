@@ -6,6 +6,8 @@ type User {
   email: String
   telephone: String
   birthdate: Date
+  adresse: String
+  city: String
 }
 
 input UserInput {
@@ -14,6 +16,8 @@ input UserInput {
   email: String!
   telephone: String!
   birthdate: Date!
+  adresse: String!
+  city: String!
 }
 
 type Query {
