@@ -5,8 +5,12 @@ import { useLocation } from 'react-router-dom';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import Page from '../../containers/Page/Page';
 import './Resumes.scss';
-import { useQuery } from '@apollo/client';
-import { GET_RESUMES, Resumes } from '../../services/resumes.services';
+import { useMutation, useQuery } from '@apollo/client';
+import {
+  GET_RESUMES,
+  POST_RESUME,
+  Resumes,
+} from '../../services/resumes.services';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import ResumePreview from '../../containers/ResumePreview/ResumePreview';
@@ -22,6 +26,9 @@ const Resumes = () => {
   const user: Users = location.state;
   const { loading, error, data } = useQuery(GET_RESUMES, {
     variables: { userId: user.id },
+  });
+  const [updateResume] = useMutation(POST_RESUME, {
+    refetchQueries: [{ query: GET_RESUMES }],
   });
   useEffect(() => {
     if (data) {
@@ -40,6 +47,11 @@ const Resumes = () => {
         [name]: value,
       };
     });
+  };
+
+  const update = (event: React.MouseEvent | React.FormEvent) => {
+    event.preventDefault();
+    updateResume({ variables: { resume } });
   };
 
   return (
@@ -76,7 +88,7 @@ const Resumes = () => {
                 />
               </div>
               <div className="resumes__form__row">
-                <Button logo="plus" label="Update" />
+                <Button logo="plus" label="Update" onClick={update} />
               </div>
             </form>
           </ContentContainer>

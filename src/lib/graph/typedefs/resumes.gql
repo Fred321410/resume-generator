@@ -16,3 +16,7 @@ input ResumeInput {
 type Query {
   resumes(userId: Int): [Resume]
 }
+
+type Mutation {
+  updateResume(resume: ResumeInput): Resume
+}

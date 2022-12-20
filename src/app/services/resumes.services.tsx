@@ -18,4 +18,15 @@ const GET_RESUMES = gql`
   }
 `;
 
-export { GET_RESUMES };
+const POST_RESUME = gql`
+  mutation UpdateResume($resume: ResumeInput) {
+    updateResume(resume: $resume) {
+      id
+      title
+      subtitle
+      goals
+    }
+  }
+`;
+
+export { GET_RESUMES, POST_RESUME };
