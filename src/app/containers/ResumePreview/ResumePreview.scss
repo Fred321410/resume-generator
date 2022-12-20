@@ -1,6 +1,23 @@
 @import '../../variables';
 
+
+@media print {
+    @page {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+.print-logo {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+}
+
 .resume-preview {
+    position: relative;
     width: 21cm;
     height: 29.7cm;
     background: white;
@@ -11,7 +28,7 @@
 
     &__header, &__footer {
         height: 20px;
-        background-image: -webkit-linear-gradient(0deg, rgba(178,49,145,1) 0%, rgba(28,28,33,1) 100%);
+        background-image: linear-gradient(90deg, rgba(178,49,145,1) 0%, rgba(28,28,33,1) 100%);
     }
     &__content {
         display: flex;
@@ -21,7 +38,12 @@
         &__left {
             height: 100%;
             width: 35%;
-            background-image: -webkit-linear-gradient(0deg, white 0%, rgba(203,203,203,1) 100%);
+            background-image: linear-gradient(90deg, white 0%, rgba(203,203,203,1) 100%);
+        }
+    }
+    &:hover {
+        .print-logo {
+            display: block;
         }
     }
 }
