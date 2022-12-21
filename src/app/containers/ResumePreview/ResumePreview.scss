@@ -15,35 +15,3 @@
     top: 0;
     right: 0;
 }
-
-.resume-preview {
-    position: relative;
-    width: 21cm;
-    height: 29.7cm;
-    background: white;
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 0.5cm;
-    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
-
-    &__header, &__footer {
-        height: 20px;
-        background-image: linear-gradient(90deg, rgba(178,49,145,1) 0%, rgba(28,28,33,1) 100%);
-    }
-    &__content {
-        display: flex;
-        width: 100%;
-        height: calc(100% - 40px);
-
-        &__left {
-            height: 100%;
-            width: 35%;
-            background-image: linear-gradient(90deg, white 0%, rgba(203,203,203,1) 100%);
-        }
-    }
-    &:hover {
-        .print-logo {
-            display: block;
-        }
-    }
-}

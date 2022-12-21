@@ -1,6 +1,7 @@
 import React from 'react';
 import './ResumePreview.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PageResume from '../../components/PageResume/PageResume';
 
 const ResumePreview = () => {
   const print = () => {
@@ -14,7 +15,7 @@ const ResumePreview = () => {
 
   return (
     <div id="content-to-print">
-      <div className="resume-preview">
+      <PageResume isFirstPage>
         <div className="print-logo">
           <FontAwesomeIcon
             icon="print"
@@ -22,13 +23,8 @@ const ResumePreview = () => {
             onClick={print}
           />
         </div>
-        <div className="resume-preview__header"></div>
-        <div className="resume-preview__content">
-          <div className="resume-preview__content__left">Left</div>
-          <div className="resume-preview__content__right">Right</div>
-        </div>
-        <div className="resume-preview__footer"></div>
-      </div>
+      </PageResume>
+      <PageResume></PageResume>
     </div>
   );
 };
