@@ -2,8 +2,15 @@ import React from 'react';
 import './ResumePreview.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PageResume from '../../components/PageResume/PageResume';
+import { Users } from '../../services/users.services';
+import { Resumes } from '../../services/resumes.services';
 
-const ResumePreview = () => {
+interface ResumePreviewProps {
+  user?: Users;
+  resume?: Resumes;
+}
+
+const ResumePreview = ({ user, resume }: ResumePreviewProps) => {
   const print = () => {
     const printContent = document.getElementById('content-to-print').innerHTML;
     console.log(printContent);
@@ -15,7 +22,7 @@ const ResumePreview = () => {
 
   return (
     <div id="content-to-print">
-      <PageResume isFirstPage>
+      <PageResume isFirstPage user={user} resume={resume}>
         <div className="print-logo">
           <FontAwesomeIcon
             icon="print"

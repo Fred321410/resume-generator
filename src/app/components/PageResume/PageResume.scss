@@ -27,6 +27,17 @@
             width: 35%;
             background-image: linear-gradient(90deg, white 0%, rgba(203,203,203,1) 100%);
         }
+        &__right {
+          width: 65%;
+        }
+    }
+    .content__left__container {
+      color: black;
+      margin: 20px;
+      text-align: right;
+    }
+    .content__right__container {
+      margin: 20px;
     }
     &:hover {
         .print-logo {
@@ -34,7 +45,8 @@
         }
     }
 		.first-page {
-			display: flex;
+      display: flex;
+      flex-direction: column;
       width: 100%;
       height: calc(100% - 20px);
 
@@ -43,11 +55,12 @@
 				width: 100%;
 
 				&__left {
-            height: 100%;
-            width: 35%;
+          height: 100%;
+          width: 35%;
         }
 				&__right {
 					width: 65%;
+          color: white;
 					background-image: linear-gradient(90deg, rgba(178,49,145,1) 0%, rgba(28,28,33,1) 100%);
 				}
 			}
@@ -65,5 +78,10 @@
 					background-color: rgba(238, 213, 232);
 				}
 			}
+      &__content {
+        display: flex;
+        height: 100%;
+        width: 100%;
+      }
 		}
 }

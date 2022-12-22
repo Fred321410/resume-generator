@@ -1,0 +1,30 @@
+@import '../../variables';
+
+.textarea {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-self: center;
+    padding: 10px;
+    border: 2px solid $background-color-shadow;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0);
+
+    &:has(label > input.invalid:not(:focus)) {
+        border: 2px solid red;
+    }
+    &:has(label > input.invalid) {
+        border: 2px solid orange;
+    }
+    textarea {
+        width: 100%;
+        outline-width: 0px;
+        font-size: 20px;
+        text-align: center;
+        color: white;
+        background-color: rgba(0, 0, 0, 0);
+        margin: 0px;
+        padding: 0px;
+        border: none;
+    }
+}

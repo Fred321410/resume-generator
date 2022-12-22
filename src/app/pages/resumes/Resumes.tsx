@@ -14,6 +14,7 @@ import {
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import ResumePreview from '../../containers/ResumePreview/ResumePreview';
+import Textarea from '../../components/Textarea/Textarea';
 
 const Resumes = () => {
   const [resume, setResume] = useState<Resumes>({
@@ -79,8 +80,7 @@ const Resumes = () => {
                 />
               </div>
               <div className="resumes__form__row">
-                <Input
-                  type={'text'}
+                <Textarea
                   name={'goals'}
                   label={'Goal'}
                   value={resume.goals}
@@ -96,7 +96,7 @@ const Resumes = () => {
           <ContentContainer title={`Knowledges`}></ContentContainer>
         </>
       }
-      right={<ResumePreview></ResumePreview>}
+      right={<ResumePreview user={user} resume={resume}></ResumePreview>}
     />
   );
 };
