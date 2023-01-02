@@ -57,11 +57,31 @@
 				&__left {
           height: 100%;
           width: 35%;
+          background-image: linear-gradient(90deg, white 0%, rgba(203,203,203,1) 100%);
+
+          &__name {
+            font-size: 21px;
+            font-weight: 650;
+          }
+          &__adresse {
+            font-size: 14px;
+          }
+          &__city {
+            font-size: 14px;
+          }
+          &__email {
+            font-size: 14px;
+          }
         }
 				&__right {
 					width: 65%;
           color: white;
 					background-image: linear-gradient(90deg, rgba(178,49,145,1) 0%, rgba(28,28,33,1) 100%);
+
+          &__title {
+            font-size: 28px;
+            font-weight: 650;
+          }
 				}
 			}
 			&__subheader {
@@ -76,6 +96,23 @@
 				&__right {
 					width: 65%;
 					background-color: rgba(238, 213, 232);
+
+          &__title {
+            font-size: 22px;
+            font-weight: 650;
+            color: rgba(148,0,107,1);
+          }
+          &__divider {
+            height: 2px;
+            margin-left: -20px;
+            margin-right: -20px;
+            background-color: white;
+            border: none;
+          }
+          &__goals {
+            font-size: 14px;
+            color: black;
+          }
 				}
 			}
       &__content {

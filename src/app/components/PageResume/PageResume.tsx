@@ -24,20 +24,43 @@ const PageResume = ({
             <div className="first-page__header">
               <div className="first-page__header__left">
                 <div className="content__left__container">
-                  <div>{user?.username}</div>
-                  <div>{user?.adresse}</div>
-                  <div>{user?.city}</div>
-                  <div>{user?.email}</div>
+                  <div className="first-page__header__left__name">
+                    {user?.username}
+                  </div>
+                  <div className="first-page__header__left__adresse">
+                    {user?.adresse}
+                  </div>
+                  <div className="first-page__header__left__city">
+                    {user?.city}
+                  </div>
+                  <div className="first-page__header__left__email">
+                    {user?.email}
+                  </div>
                 </div>
               </div>
               <div className="first-page__header__right">
-                <div className="content__right__container">{resume?.title}</div>
+                <div className="content__right__container">
+                  <div className="first-page__header__right__title">
+                    {resume?.title}
+                  </div>
+                  <div className="first-page__header__right__subtitle">
+                    {resume?.subtitle}
+                  </div>
+                </div>
               </div>
             </div>
             <div className="first-page__subheader">
-              <div className="first-page__subheader__left">Left</div>
+              <div className="first-page__subheader__left"></div>
               <div className="first-page__subheader__right">
-                {resume?.goals}
+                <div className="content__right__container">
+                  <div className="first-page__subheader__right__title">
+                    Projet Professionnel
+                  </div>
+                  <hr className="first-page__subheader__right__divider"></hr>
+                  <div className="first-page__subheader__right__goals">
+                    {resume?.goals}
+                  </div>
+                </div>
               </div>
             </div>
             <div className="first-page__content">
