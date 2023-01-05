@@ -21,7 +21,7 @@ const Resumes = () => {
     title: '',
     goals: '',
     subtitle: '',
-    id: 1,
+    id: -1,
   });
   const location = useLocation();
   const user: Users = location.state;
@@ -37,7 +37,7 @@ const Resumes = () => {
     }
   }, [loading]);
 
-  if (loading) return <p>Loading ...</p>;
+  if (loading || resume.id < 0) return <p>Loading ...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -92,7 +92,7 @@ const Resumes = () => {
               </div>
             </form>
           </ContentContainer>
-          <Experiences user={user}></Experiences>
+          <Experiences resume={resume}></Experiences>
           <ContentContainer title={`Knowledges`}></ContentContainer>
         </>
       }

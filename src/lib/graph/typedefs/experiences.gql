@@ -1,0 +1,35 @@
+type Experience {
+  id: Int,
+  poste: String!
+  esn: String
+  enterprise: String!
+  from: Date!
+  to: Date
+  stillInPost: Boolean
+  logo: String
+  city: String
+  country: String
+  description: String
+}
+
+input ExperienceInput {
+  id: Int,
+  poste: String!
+  esn: String
+  enterprise: String!
+  from: Date!
+  to: Date
+  stillInPost: Boolean
+  logo: String
+  city: String
+  country: String
+  description: String
+}
+
+type Query {
+  experiences(resumeId: Int): [Experience]
+}
+
+type Mutation {
+  updateExperience(experience: ExperienceInput): Experience
+}

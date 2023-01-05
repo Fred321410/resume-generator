@@ -53,9 +53,7 @@ const PageResume = ({
               <div className="first-page__subheader__left"></div>
               <div className="first-page__subheader__right">
                 <div className="content__right__container">
-                  <div className="first-page__subheader__right__title">
-                    Projet Professionnel
-                  </div>
+                  <div className="page-resume__title">Projet Professionnel</div>
                   <hr className="first-page__subheader__right__divider"></hr>
                   <div className="first-page__subheader__right__goals">
                     {resume?.goals}
@@ -64,8 +62,18 @@ const PageResume = ({
               </div>
             </div>
             <div className="first-page__content">
-              <div className="page-resume__content__left">Left</div>
-              <div className="page-resume__content__right">Right3</div>
+              <div className="page-resume__content__left">
+                <div className="content__left__container">
+                  <div className="page-resume__title">Formations</div>
+                </div>
+              </div>
+              <div className="page-resume__content__right">
+                <div className="content__right__container">
+                  <div className="page-resume__title">
+                    Expériences professionnelles
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="page-resume__footer"></div>
@@ -74,8 +82,14 @@ const PageResume = ({
         <>
           <div className="page-resume__header"></div>
           <div className="page-resume__content">
-            <div className="page-resume__content__left">Left</div>
-            <div className="page-resume__content__right">Right</div>
+            <div className="page-resume__content__left">
+              <div className="content__left__container">
+                <div className="page-resume__title">Connaissances</div>
+              </div>
+            </div>
+            <div className="page-resume__content__right">
+              <div className="content__right__container">--</div>
+            </div>
           </div>
           <div className="page-resume__footer"></div>
         </>

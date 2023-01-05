@@ -11,6 +11,7 @@
   color: white;
   border-bottom: 2px solid $secondary-color;
   background-color: $background-color-darker;
+  z-index: 1;
 
   &__container {
     display: flex;
