@@ -19,7 +19,14 @@ async function getExperiences(_: any, data: any) {
 }
 
 async function postExperience(_: any, data: any) {
-  const experiences = await knex('experiences').where({id: data.experience.id}).update(data.experience).returning('*');
+  console.log('data');
+  let experiences;
+  if (!data.experience.id) {
+    data.experience.resume = data.resumeId;
+    experiences = await knex('experiences').insert(data.experience).returning('*');
+  } else {
+    experiences = await knex('experiences').where({id: data.experience.id}).update(data.experience).returning('*');
+  }
   const experience = experiences[0];
   return experience;
 }

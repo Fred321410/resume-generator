@@ -6,15 +6,15 @@ export interface Experiences extends Omit<ExperiencesNoId, 'id'> {
 
 export interface ExperiencesNoId {
   poste: string;
-  esn?: string;
+  esn: string;
   enterprise: string;
   from: string;
-  to?: string;
+  to: string;
   stillInPost?: boolean;
-  logo?: string;
-  city?: string;
-  country?: string;
-  description?: string;
+  logo: string;
+  city: string;
+  country: string;
+  description: string;
 }
 
 const GET_EXPERIENCES = gql`
@@ -36,8 +36,8 @@ const GET_EXPERIENCES = gql`
 `;
 
 const POST_EXPERIENCE = gql`
-  mutation UpdateExperience($experience: ExperienceInput) {
-    updateExperience(experience: $experience) {
+  mutation UpdateExperience($experience: ExperienceInput, $resumeId: Int) {
+    updateExperience(experience: $experience, resumeId: $resumeId) {
       id
       poste
       esn

@@ -5,8 +5,9 @@ import {
   GET_EXPERIENCES,
   Experiences,
   ExperiencesNoId,
+  POST_EXPERIENCE,
 } from '../../services/experiences.services';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { Resumes } from '../../services/resumes.services';
 import ExperiencesList from '../ExperiencesList/ExperiencesList';
 import ExperienceForm from '../ExperienceForm/ExperienceForm';
@@ -23,18 +24,23 @@ const Experiences = ({ resume }: ExperiencesProps) => {
   const { loading, error, data } = useQuery(GET_EXPERIENCES, {
     variables: { resumeId: resume.id },
   });
+  const [addExperience] = useMutation(POST_EXPERIENCE, {
+    refetchQueries: [
+      { query: GET_EXPERIENCES, variables: { resumeId: resume.id } },
+    ],
+  });
   useEffect(() => {
     if (data) {
       setExperiences(data.experiences);
     }
-  }, [loading]);
+  }, [loading, data]);
 
   if (loading) return <p>Loading ...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
   const insertOrUpdate = (experience: Experiences | ExperiencesNoId | null) => {
     if (experience) {
-      // addUser({ variables: { user } });
+      addExperience({ variables: { experience, resumeId: resume.id } });
     }
     setSelectedExperience(null);
   };

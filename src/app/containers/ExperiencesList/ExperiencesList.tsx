@@ -22,6 +22,12 @@ const ExperiencesList = ({
       poste: '',
       enterprise: '',
       from: '',
+      to: '',
+      esn: '',
+      country: '',
+      city: '',
+      description: '',
+      logo: '',
     });
   };
 

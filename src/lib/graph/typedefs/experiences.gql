@@ -31,5 +31,5 @@ type Query {
 }
 
 type Mutation {
-  updateExperience(experience: ExperienceInput): Experience
+  updateExperience(experience: ExperienceInput, resumeId: Int): Experience
 }
