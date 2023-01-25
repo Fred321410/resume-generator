@@ -6,6 +6,7 @@ import {
   Experiences,
   ExperiencesNoId,
   POST_EXPERIENCE,
+  DELETE_EXPERIENCE,
 } from '../../services/experiences.services';
 import { useMutation, useQuery } from '@apollo/client';
 import { Resumes } from '../../services/resumes.services';
@@ -29,6 +30,11 @@ const Experiences = ({ resume }: ExperiencesProps) => {
       { query: GET_EXPERIENCES, variables: { resumeId: resume.id } },
     ],
   });
+  const [deleteExperience] = useMutation(DELETE_EXPERIENCE, {
+    refetchQueries: [
+      { query: GET_EXPERIENCES, variables: { resumeId: resume.id } },
+    ],
+  });
   useEffect(() => {
     if (data) {
       setExperiences(data.experiences);
@@ -45,6 +51,13 @@ const Experiences = ({ resume }: ExperiencesProps) => {
     setSelectedExperience(null);
   };
 
+  const remove = () => {
+    if (selectedExperience && selectedExperience.id) {
+      deleteExperience({ variables: { id: selectedExperience.id } });
+    }
+    setSelectedExperience(null);
+  };
+
   return (
     <ContentContainer title={`Experiences`}>
       <div className="experiences">
@@ -57,6 +70,7 @@ const Experiences = ({ resume }: ExperiencesProps) => {
           <ExperienceForm
             selectedExperience={selectedExperience}
             submitExperience={insertOrUpdate}
+            removeExperience={remove}
           />
         )}
       </div>

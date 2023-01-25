@@ -6,6 +6,7 @@ const Query = {
 
 const Mutation = {
   updateExperience: postExperience,
+  deleteExperience: deleteExperience
 }
 
 
@@ -29,4 +30,8 @@ async function postExperience(_: any, data: any) {
   }
   const experience = experiences[0];
   return experience;
+}
+
+async function deleteExperience(_: any, data: any) {
+  await knex('experiences').where({id: data.id}).del();
 }

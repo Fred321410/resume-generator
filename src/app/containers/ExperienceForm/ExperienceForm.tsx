@@ -11,11 +11,13 @@ import './ExperienceForm.scss';
 interface ExperienceFormProps {
   selectedExperience: Experiences | ExperiencesNoId;
   submitExperience: (a: Experiences | ExperiencesNoId | null) => unknown;
+  removeExperience: (a: Experiences | ExperiencesNoId) => unknown;
 }
 
 const ExperienceForm = ({
   selectedExperience,
   submitExperience,
+  removeExperience,
 }: ExperienceFormProps) => {
   const [experience, setExperience] = useState(selectedExperience);
   const [isFormValid, setIsFormValid] = useState(false);
@@ -52,6 +54,11 @@ const ExperienceForm = ({
   const handleSubmit = (event: React.MouseEvent | React.FormEvent) => {
     event.preventDefault();
     submitExperience(experience);
+  };
+
+  const remove = (event: React.MouseEvent | React.FormEvent) => {
+    event.preventDefault();
+    removeExperience(experience);
   };
 
   useEffect(() => {
@@ -152,6 +159,11 @@ const ExperienceForm = ({
             label="Cancel"
             onClick={cancel}
           />
+          {selectedExperience ? (
+            <Button logo={'trash'} label={'Delete'} onClick={remove} />
+          ) : (
+            <></>
+          )}
           <Button
             isDisabled={!isFormValid}
             logo="plus"

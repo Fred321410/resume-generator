@@ -2,11 +2,13 @@ import { Users } from '../../services/users.services';
 import React, { HTMLAttributes } from 'react';
 import './PageResume.scss';
 import { Resumes } from '../../services/resumes.services';
+import { Experiences } from '../../services/experiences.services';
 
 interface PageResumeProps extends HTMLAttributes<HTMLDivElement> {
   isFirstPage?: boolean;
   user?: Users;
   resume?: Resumes;
+  experiences: JSX.Element | JSX.Element[];
 }
 
 const PageResume = ({
@@ -14,6 +16,7 @@ const PageResume = ({
   children,
   user,
   resume,
+  experiences,
 }: PageResumeProps) => {
   return (
     <div className="page-resume">
@@ -72,6 +75,7 @@ const PageResume = ({
                   <div className="page-resume__title">
                     Expériences professionnelles
                   </div>
+                  {experiences}
                 </div>
               </div>
             </div>

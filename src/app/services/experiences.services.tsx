@@ -53,4 +53,10 @@ const POST_EXPERIENCE = gql`
   }
 `;
 
-export { GET_EXPERIENCES, POST_EXPERIENCE };
+const DELETE_EXPERIENCE = gql`
+  mutation deleteExperience($id: Int) {
+    deleteExperience(id: $id)
+  }
+`;
+
+export { GET_EXPERIENCES, POST_EXPERIENCE, DELETE_EXPERIENCE };
