@@ -16,6 +16,16 @@
         font-size: 14px;
         white-space: pre-wrap;
     }
+    &__tools {
+        display: flex;
+        font-size: 14px;
+        white-space: pre-wrap;
+
+        &__label {
+            font-weight: 700;
+            text-decoration: underline;
+        }
+    }
     &__logo {
         position: absolute;
         right: 20px;

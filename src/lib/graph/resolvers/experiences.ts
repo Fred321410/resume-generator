@@ -15,7 +15,7 @@ module.exports = { Query, Mutation }
 export {};
 
 async function getExperiences(_: any, data: any) {
-  const experiences = await knex('experiences').select().where({resume: data.resumeId});
+  const experiences = await knex('experiences').select().where({resume: data.resumeId}).orderBy('order');
   return experiences;
 }
 

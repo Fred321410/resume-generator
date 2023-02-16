@@ -30,6 +30,12 @@ const Experience = ({ experience }: ExperienceProps) => {
         {datesAsString} - {experience.city}
       </div>
       <div className="experience__description">{experience.description}</div>
+      <div className="experience__tools">
+        <div className="experience__tools__label">
+          Outils/technologies utilisés:
+        </div>{' '}
+        {experience.tools}
+      </div>
     </div>
   );
 };

@@ -32,6 +32,9 @@ const ExperienceForm = ({
     description: true,
     stillInPoste: true,
     logo: true,
+    order: true,
+    tools: true,
+    page: true,
   });
 
   useEffect(() => setExperience(selectedExperience), [selectedExperience]);
@@ -73,6 +76,9 @@ const ExperienceForm = ({
       description: false,
       stillInPoste: false,
       logo: false,
+      order: false,
+      tools: false,
+      page: false,
     });
     setIsFormValid(true);
   }, [experience]);
@@ -150,6 +156,32 @@ const ExperienceForm = ({
             label={'Description'}
             value={experience.description}
             onChange={handleChange}
+          />
+        </div>
+        <div className="experience-form__form__row">
+          <Textarea
+            name={'tools'}
+            label={'Tools'}
+            value={experience.tools}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="experience-form__form__row">
+          <Input
+            type={'number'}
+            name={'order'}
+            label={'Order'}
+            value={experience.order}
+            onChange={handleChange}
+            isValid={!formError.order}
+          />
+          <Input
+            type={'number'}
+            name={'page'}
+            label={'Page'}
+            value={experience.page}
+            onChange={handleChange}
+            isValid={!formError.page}
           />
         </div>
         <div className="experience-form__form__row">

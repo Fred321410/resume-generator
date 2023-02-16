@@ -42,13 +42,30 @@ const ResumePreview = ({ user, resume }: ResumePreviewProps) => {
     <></>
   );
 
+  function getExperiencesComponents(
+    nbPage: number,
+    experiences: [Experiences] | undefined
+  ): JSX.Element | JSX.Element[] {
+    return experiences ? (
+      experiences
+        .filter(
+          (experience: Experiences) => experience.page === nbPage.toString()
+        )
+        .map((experience: Experiences) => {
+          return <Experience experience={experience}></Experience>;
+        })
+    ) : (
+      <></>
+    );
+  }
+
   return (
     <div id="content-to-print">
       <PageResume
         isFirstPage
         user={user}
         resume={resume}
-        experiences={ExperiencesComponents}
+        experiences={getExperiencesComponents(1, experiences)}
       >
         <div className="print-logo">
           <FontAwesomeIcon
@@ -58,7 +75,9 @@ const ResumePreview = ({ user, resume }: ResumePreviewProps) => {
           />
         </div>
       </PageResume>
-      <PageResume experiences={ExperiencesComponents}></PageResume>
+      <PageResume
+        experiences={getExperiencesComponents(2, experiences)}
+      ></PageResume>
     </div>
   );
 };

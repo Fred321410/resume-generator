@@ -10,6 +10,6 @@ exports.seed = async function(knex) {
     {id: 2, title: 'Default2', subtitle: 'Default', goals: 'Default', userId: 2},
     {id: 3, title: 'Default3', subtitle: 'Default', goals: 'Default', userId: 3},
     {id: 4, title: 'Default4', subtitle: 'Default', goals: 'Default', userId: 4},
-    {id: 5, title: 'Développeur Fullstack Sénior', subtitle: 'Ingénieur ESEO (France', goals: 'Obtenir un emploi en tant que développeur Fullstack.Mettre à profit mes compétences et améliorer mes connaissances', userId: 5},
+    {id: 5, title: 'Développeur Fullstack Sénior', subtitle: 'Ingénieur ESEO (France)', goals: 'Obtenir un emploi en tant que développeur Fullstack.Mettre à profit mes compétences et améliorer mes connaissances', userId: 5},
   ]);
 };

@@ -10,6 +10,9 @@ type Experience {
   city: String
   country: String
   description: String
+  order: String!
+  tools: String
+  page: String!
 }
 
 input ExperienceInput {
@@ -24,6 +27,9 @@ input ExperienceInput {
   city: String
   country: String
   description: String
+  order: String!
+  tools: String
+  page: String!
 }
 
 type Query {

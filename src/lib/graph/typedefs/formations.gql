@@ -1,0 +1,26 @@
+type Formation {
+  id: Int,
+  title: String!
+  from: Date!
+  to: Date
+  description: String
+  order: String!
+}
+
+input FormationInput {
+  id: Int,
+  title: String!
+  from: Date!
+  to: Date
+  description: String
+  order: String!
+}
+
+type Query {
+  formations(resumeId: Int): [Formation]
+}
+
+type Mutation {
+  updateFormation(formation: FormationInput, resumeId: Int): Formation
+  deleteFormation(id: Int): Int
+}

@@ -1,0 +1,22 @@
+type Knowledge {
+  id: Int,
+  type: String!
+  title: String!
+  order: String!
+}
+
+input KnowledgeInput {
+  id: Int,
+  type: String!
+  title: String!
+  order: String!
+}
+
+type Query {
+  knowledges(resumeId: Int): [Knowledge]
+}
+
+type Mutation {
+  updateKnowledge(knowledge: KnowledgeInput, resumeId: Int): Knowledge
+  deleteKnowledge(id: Int): Int
+}

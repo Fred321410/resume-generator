@@ -15,6 +15,9 @@ export interface ExperiencesNoId {
   city: string;
   country: string;
   description: string;
+  tools: string;
+  order: string;
+  page: string;
 }
 
 const GET_EXPERIENCES = gql`
@@ -31,6 +34,9 @@ const GET_EXPERIENCES = gql`
       city
       country
       description
+      tools
+      order
+      page
     }
   }
 `;
@@ -49,6 +55,9 @@ const POST_EXPERIENCE = gql`
       city
       country
       description
+      order
+      tools
+      page
     }
   }
 `;
