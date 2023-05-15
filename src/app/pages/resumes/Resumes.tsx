@@ -93,7 +93,7 @@ const Resumes = () => {
             </form>
           </ContentContainer>
           <Experiences resume={resume}></Experiences>
-          <ContentContainer title={`Knowledges`}></ContentContainer>
+          <ContentContainer title={`Knowledge`}></ContentContainer>
         </>
       }
       right={<ResumePreview user={user} resume={resume}></ResumePreview>}

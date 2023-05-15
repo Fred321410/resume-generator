@@ -4,8 +4,8 @@
  */
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
-  await knex('knowledges').del()
-  await knex('knowledges').insert([
+  await knex('knowledge').del()
+  await knex('knowledge').insert([
     {id: 1, title: 'Français: Maternelle', type: 'Langues', order: '1', resume: 5},
     {id: 2, title: 'Anglais: Courant', type: 'Langues', order: '2', resume: 5},
     {id: 3, title: 'Java/J2EE', type: 'Langages de programmation', order: '3', resume: 5},

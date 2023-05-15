@@ -1,18 +1,18 @@
 import { gql } from '@apollo/client';
 
-export interface Knowledges extends Omit<KnowledgesNoId, 'id'> {
+export interface Knowledge extends Omit<KnowledgeNoId, 'id'> {
   id: number;
 }
 
-export interface KnowledgesNoId {
+export interface KnowledgeNoId {
   type: string;
   title: string;
   order: string;
 }
 
-const GET_KNOWLEDGES = gql`
-  query GetKnowledges($resumeId: Int) {
-    knowledges(resumeId: $resumeId) {
+const GET_KNOWLEDGE = gql`
+  query GetKnowledge($resumeId: Int) {
+    knowledge(resumeId: $resumeId) {
       id
       type
       title
@@ -38,4 +38,4 @@ const DELETE_KNOWLEDGE = gql`
   }
 `;
 
-export { GET_KNOWLEDGES, POST_KNOWLEDGE, DELETE_KNOWLEDGE };
+export { GET_KNOWLEDGE, POST_KNOWLEDGE, DELETE_KNOWLEDGE };

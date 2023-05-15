@@ -2,7 +2,6 @@ import { Users } from '../../services/users.services';
 import React, { HTMLAttributes } from 'react';
 import './PageResume.scss';
 import { Resumes } from '../../services/resumes.services';
-import { Experiences } from '../../services/experiences.services';
 
 interface PageResumeProps extends HTMLAttributes<HTMLDivElement> {
   isFirstPage?: boolean;

@@ -1,4 +1,3 @@
-import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import React, { useEffect, useState } from 'react';
 import './Experiences.scss';
 import {
@@ -10,8 +9,8 @@ import {
 } from '../../services/experiences.services';
 import { useMutation, useQuery } from '@apollo/client';
 import { Resumes } from '../../services/resumes.services';
-import ExperiencesList from '../ExperiencesList/ExperiencesList';
 import ExperienceForm from '../ExperienceForm/ExperienceForm';
+import Elements from '../Elements/Elements';
 
 interface ExperiencesProps {
   resume: Resumes;
@@ -58,23 +57,45 @@ const Experiences = ({ resume }: ExperiencesProps) => {
     setSelectedExperience(null);
   };
 
+  const setSelectedExperienceMapper = (experienceId: number | null) => {
+    if (experienceId && experiences) {
+      const experience = experiences.find((exp) => exp.id === experienceId);
+      if (experience) setSelectedExperience(experience);
+    } else {
+      setSelectedExperience({
+        poste: '',
+        enterprise: '',
+        from: '',
+        to: '',
+        esn: '',
+        country: '',
+        city: '',
+        description: '',
+        logo: '',
+        tools: '',
+        order: '',
+        page: '',
+      });
+    }
+  };
+
   return (
-    <ContentContainer title={`Experiences`}>
-      <div className="experiences">
-        {!selectedExperience ? (
-          <ExperiencesList
-            experiences={experiences}
-            setExperience={setSelectedExperience}
-          ></ExperiencesList>
-        ) : (
-          <ExperienceForm
-            selectedExperience={selectedExperience}
-            submitExperience={insertOrUpdate}
-            removeExperience={remove}
-          />
-        )}
-      </div>
-    </ContentContainer>
+    <Elements
+      title={`Experiences`}
+      elements={
+        experiences?.map((el) => {
+          return { id: el.id, label: el.enterprise };
+        }) as [Elements]
+      }
+      displayForm={!!selectedExperience}
+      setSelectedElement={setSelectedExperienceMapper}
+    >
+      <ExperienceForm
+        selectedExperience={selectedExperience}
+        submitExperience={insertOrUpdate}
+        removeExperience={remove}
+      />
+    </Elements>
   );
 };
 

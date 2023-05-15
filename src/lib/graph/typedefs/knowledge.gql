@@ -13,7 +13,7 @@ input KnowledgeInput {
 }
 
 type Query {
-  knowledges(resumeId: Int): [Knowledge]
+  knowledge(resumeId: Int): [Knowledge]
 }
 
 type Mutation {

@@ -34,14 +34,6 @@ const ResumePreview = ({ user, resume }: ResumePreviewProps) => {
     document.body.innerHTML = originalContent;
   };
 
-  const ExperiencesComponents = experiences ? (
-    experiences.map((experience: Experiences) => {
-      return <Experience experience={experience}></Experience>;
-    })
-  ) : (
-    <></>
-  );
-
   function getExperiencesComponents(
     nbPage: number,
     experiences: [Experiences] | undefined
@@ -52,7 +44,12 @@ const ResumePreview = ({ user, resume }: ResumePreviewProps) => {
           (experience: Experiences) => experience.page === nbPage.toString()
         )
         .map((experience: Experiences) => {
-          return <Experience experience={experience}></Experience>;
+          return (
+            <Experience
+              key={experience.id}
+              experience={experience}
+            ></Experience>
+          );
         })
     ) : (
       <></>
