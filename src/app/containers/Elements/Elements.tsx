@@ -6,7 +6,7 @@ import { Elements } from '../../services/elements.services';
 
 interface ElementsProps extends HTMLAttributes<HTMLDivElement> {
   title: string;
-  elements: [Elements] | undefined;
+  elements: Elements[] | undefined;
   displayForm: boolean;
   setSelectedElement: (element: number | null) => void;
 }
@@ -22,10 +22,7 @@ const Elements = ({
     <ContentContainer title={title}>
       <div className="elements">
         {!displayForm ? (
-          <ElementsList
-            elements={elements}
-            setElement={setSelectedElement}
-          ></ElementsList>
+          <ElementsList elements={elements} setElement={setSelectedElement} />
         ) : (
           children
         )}

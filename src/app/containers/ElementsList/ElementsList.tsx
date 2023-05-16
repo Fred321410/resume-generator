@@ -5,7 +5,7 @@ import Button from '../../components/Button/Button';
 import { Elements } from '../../services/elements.services';
 
 interface ElementsListProps {
-  elements: [Elements] | undefined;
+  elements: Elements[] | undefined;
   setElement: (element: number | null) => void;
 }
 

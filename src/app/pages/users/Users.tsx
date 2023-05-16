@@ -11,16 +11,13 @@ import {
   POST_USER,
   DELETE_USER,
   Users,
-  UsersNoId,
   isUser,
 } from '../../services/users.services';
 import './Users.scss';
 
 const Users = () => {
   const navigate = useNavigate();
-  const [selectedUsers, setSelectedUsers] = useState<Users | UsersNoId | null>(
-    null
-  );
+  const [selectedUsers, setSelectedUsers] = useState<Users | null>(null);
   const [addUser] = useMutation(POST_USER, {
     refetchQueries: [{ query: GET_USERS }],
   });
@@ -39,7 +36,7 @@ const Users = () => {
     });
   };
 
-  const insertOrUpdate = (user: Users | UsersNoId) => {
+  const insertOrUpdate = (user: Users) => {
     addUser({ variables: { user } });
     setSelectedUsers(null);
   };

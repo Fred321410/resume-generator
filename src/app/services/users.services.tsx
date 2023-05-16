@@ -2,21 +2,17 @@ import { gql } from '@apollo/client';
 import { get, post } from './utils';
 const LOCAL_API = 'users';
 
-export interface Users extends Omit<UsersNoId, 'id'> {
-  id: number;
-}
-
-export interface UsersNoId {
+export interface Users {
+  id?: number;
   username: string;
   birthdate: string;
   telephone: string;
   email: string;
   adresse: string;
   city: string;
-  id?: undefined;
 }
 
-const isUser = (user: Users | UsersNoId | null): user is Users => {
+const isUser = (user: Users | null): user is Users => {
   //if (!user) return false;
   return user?.id !== undefined;
 };
@@ -26,8 +22,8 @@ async function getUsers(): Promise<Users[]> {
   return data;
 }
 
-async function addUser(user: UsersNoId): Promise<Users> {
-  const data = await post<UsersNoId, Users>(LOCAL_API, user);
+async function addUser(user: Users): Promise<Users> {
+  const data = await post<Users, Users>(LOCAL_API, user);
   return data;
 }
 

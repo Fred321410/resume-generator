@@ -1,10 +1,7 @@
 import { gql } from '@apollo/client';
 
-export interface Knowledge extends Omit<KnowledgeNoId, 'id'> {
-  id: number;
-}
-
-export interface KnowledgeNoId {
+export interface Knowledge {
+  id?: number;
   type: string;
   title: string;
   order: string;

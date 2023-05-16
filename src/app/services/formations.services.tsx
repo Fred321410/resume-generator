@@ -1,10 +1,6 @@
 import { gql } from '@apollo/client';
-
-export interface Formations extends Omit<FormationsNoId, 'id'> {
-  id: number;
-}
-
-export interface FormationsNoId {
+export interface Formations {
+  id?: number;
   title: string;
   from: string;
   to: string;

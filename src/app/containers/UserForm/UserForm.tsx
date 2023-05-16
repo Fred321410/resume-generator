@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
-import { Users, UsersNoId } from '../../services/users.services';
+import { Users } from '../../services/users.services';
 import './UserForm.scss';
 
 interface UserFormProps {
-  selectedUser: Users | UsersNoId;
-  submitUser: (a: Users | UsersNoId) => unknown;
+  selectedUser: Users;
+  submitUser: (a: Users) => unknown;
 }
 
 const UserForm = ({ selectedUser, submitUser }: UserFormProps) => {

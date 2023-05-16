@@ -1,10 +1,11 @@
 import { gql } from '@apollo/client';
 
-export interface Experiences extends Omit<ExperiencesNoId, 'id'> {
+/*export interface Experiences extends ExperiencesNoId {
   id: number;
-}
+}*/
 
-export interface ExperiencesNoId {
+export interface Experiences {
+  id?: number;
   poste: string;
   esn: string;
   enterprise: string;

@@ -1,25 +1,18 @@
 import Textarea from '../../components/Textarea/Textarea';
-import {
-  Experiences,
-  ExperiencesNoId,
-} from 'app/services/experiences.services';
+import { Experiences } from 'app/services/experiences.services';
 import React, { useState, useEffect } from 'react';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import './ExperienceForm.scss';
 
 interface ExperienceFormProps {
-  selectedExperience: Experiences | ExperiencesNoId;
-  submitExperience: (a: Experiences | ExperiencesNoId | null) => unknown;
-  removeExperience: (a: Experiences | ExperiencesNoId) => unknown;
+  selected: Experiences;
+  submit: (a: Experiences | null) => unknown;
+  remove: (a: Experiences) => unknown;
 }
 
-const ExperienceForm = ({
-  selectedExperience,
-  submitExperience,
-  removeExperience,
-}: ExperienceFormProps) => {
-  const [experience, setExperience] = useState(selectedExperience);
+const ExperienceForm = ({ selected, submit, remove }: ExperienceFormProps) => {
+  const [experience, setExperience] = useState(selected);
   const [isFormValid, setIsFormValid] = useState(false);
   const [formError, setFormError] = useState({
     poste: true,
@@ -37,7 +30,7 @@ const ExperienceForm = ({
     page: true,
   });
 
-  useEffect(() => setExperience(selectedExperience), [selectedExperience]);
+  useEffect(() => setExperience(selected), [selected]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -51,17 +44,17 @@ const ExperienceForm = ({
 
   const cancel = (event: React.MouseEvent | React.FormEvent) => {
     event.preventDefault();
-    submitExperience(null);
+    submit(null);
   };
 
   const handleSubmit = (event: React.MouseEvent | React.FormEvent) => {
     event.preventDefault();
-    submitExperience(experience);
+    submit(experience);
   };
 
-  const remove = (event: React.MouseEvent | React.FormEvent) => {
+  const deleteData = (event: React.MouseEvent | React.FormEvent) => {
     event.preventDefault();
-    removeExperience(experience);
+    remove(experience);
   };
 
   useEffect(() => {
@@ -191,15 +184,15 @@ const ExperienceForm = ({
             label="Cancel"
             onClick={cancel}
           />
-          {selectedExperience ? (
-            <Button logo={'trash'} label={'Delete'} onClick={remove} />
+          {selected ? (
+            <Button logo={'trash'} label={'Delete'} onClick={deleteData} />
           ) : (
             <></>
           )}
           <Button
             isDisabled={!isFormValid}
             logo="plus"
-            label={(selectedExperience as Experiences).id ? 'Update' : 'Insert'}
+            label={(selected as Experiences).id ? 'Update' : 'Insert'}
             onClick={handleSubmit}
           />
         </div>

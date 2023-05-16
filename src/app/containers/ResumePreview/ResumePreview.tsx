@@ -16,7 +16,7 @@ interface ResumePreviewProps {
 }
 
 const ResumePreview = ({ user, resume }: ResumePreviewProps) => {
-  const [experiences, setExperiences] = useState<[Experiences]>();
+  const [experiences, setExperiences] = useState<Experiences[]>();
   const { loading, error, data } = useQuery(GET_EXPERIENCES, {
     variables: { resumeId: resume.id },
   });
@@ -36,7 +36,7 @@ const ResumePreview = ({ user, resume }: ResumePreviewProps) => {
 
   function getExperiencesComponents(
     nbPage: number,
-    experiences: [Experiences] | undefined
+    experiences: Experiences[] | undefined
   ): JSX.Element | JSX.Element[] {
     return experiences ? (
       experiences

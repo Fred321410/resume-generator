@@ -1,5 +1,5 @@
-import Experiences from '../../containers/Experiences/Experiences';
-import { Users } from 'app/services/users.services';
+import ElementsContainer from '../../containers/ElementsContainer/ElementsContainer';
+import { Users } from '../../services/users.services';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
@@ -15,6 +15,10 @@ import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import ResumePreview from '../../containers/ResumePreview/ResumePreview';
 import Textarea from '../../components/Textarea/Textarea';
+import ExperienceForm from '../../containers/ExperienceForm/ExperienceForm';
+import { Experiences } from '../../services/experiences.services';
+import { useExperiencesBack } from './Resumes.functionnal';
+import { Knowledge } from 'app/services/knowledge.services';
 
 const Resumes = () => {
   const [resume, setResume] = useState<Resumes>({
@@ -23,6 +27,7 @@ const Resumes = () => {
     subtitle: '',
     id: -1,
   });
+
   const location = useLocation();
   const user: Users = location.state;
   const { loading, error, data } = useQuery(GET_RESUMES, {
@@ -36,6 +41,7 @@ const Resumes = () => {
       setResume(data.resumes[0]);
     }
   }, [loading]);
+  const test = useExperiencesBack(resume.id);
 
   if (loading || resume.id < 0) return <p>Loading ...</p>;
   if (error) return <p>Error : {error.message}</p>;
@@ -92,7 +98,29 @@ const Resumes = () => {
               </div>
             </form>
           </ContentContainer>
-          <Experiences resume={resume}></Experiences>
+          <ElementsContainer<Experiences>
+            resume={resume}
+            useBack={test}
+            title="Expériences"
+            Wrapper={ExperienceForm}
+            getDefaultFormValues={() => ({
+              poste: '',
+              enterprise: '',
+              from: '',
+              to: '',
+              esn: '',
+              country: '',
+              city: '',
+              description: '',
+              logo: '',
+              tools: '',
+              order: '',
+              page: '',
+            })}
+            labelKey="enterprise"
+            elementKey="experience"
+            elementsKey="experiences"
+          />
           <ContentContainer title={`Knowledge`}></ContentContainer>
         </>
       }
