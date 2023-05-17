@@ -8,6 +8,8 @@ interface PageResumeProps extends HTMLAttributes<HTMLDivElement> {
   user?: Users;
   resume?: Resumes;
   experiences: JSX.Element | JSX.Element[];
+  formations?: JSX.Element | JSX.Element[];
+  knowledge?: JSX.Element | JSX.Element[];
 }
 
 const PageResume = ({
@@ -16,6 +18,8 @@ const PageResume = ({
   user,
   resume,
   experiences,
+  formations,
+  knowledge,
 }: PageResumeProps) => {
   return (
     <div className="page-resume">
@@ -68,6 +72,7 @@ const PageResume = ({
                 <div className="content__left__container">
                   <div className="page-resume__title">Formations</div>
                 </div>
+                <div>{formations}</div>
               </div>
               <div className="page-resume__content__right">
                 <div className="content__right__container">
@@ -88,10 +93,11 @@ const PageResume = ({
             <div className="page-resume__content__left">
               <div className="content__left__container">
                 <div className="page-resume__title">Connaissances</div>
+                <div>{knowledge}</div>
               </div>
             </div>
             <div className="page-resume__content__right">
-              <div className="content__right__container">--</div>
+              <div className="content__right__container">{experiences}</div>
             </div>
           </div>
           <div className="page-resume__footer"></div>

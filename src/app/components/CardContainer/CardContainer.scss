@@ -9,6 +9,7 @@
     border-radius: 10px;
     background-color: $secondary-color;
     box-shadow: $background-color-container 5px 5px 0px;
+    overflow: hidden;
 
     &:not(.disabled) {
         &:hover {

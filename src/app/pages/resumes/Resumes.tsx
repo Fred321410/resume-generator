@@ -17,8 +17,15 @@ import ResumePreview from '../../containers/ResumePreview/ResumePreview';
 import Textarea from '../../components/Textarea/Textarea';
 import ExperienceForm from '../../containers/ExperienceForm/ExperienceForm';
 import { Experiences } from '../../services/experiences.services';
-import { useExperiencesBack } from './Resumes.functionnal';
-import { Knowledge } from 'app/services/knowledge.services';
+import {
+  useExperiencesBack,
+  useFormationsBack,
+  useKnowledgeBack,
+} from './Resumes.functionnal';
+import { Knowledge } from '../../services/knowledge.services';
+import { Formations } from '../../services/formations.services';
+import KnowledgeForm from '../../containers/KnowledgeForm/KnowledgeForm';
+import FormationForm from '../../containers/FormationForm/FormationForm';
 
 const Resumes = () => {
   const [resume, setResume] = useState<Resumes>({
@@ -41,7 +48,10 @@ const Resumes = () => {
       setResume(data.resumes[0]);
     }
   }, [loading]);
-  const test = useExperiencesBack(resume.id);
+
+  const experiencesBack = useExperiencesBack(resume.id);
+  const knowLedgeBack = useKnowledgeBack(resume.id);
+  const formationBack = useFormationsBack(resume.id);
 
   if (loading || resume.id < 0) return <p>Loading ...</p>;
   if (error) return <p>Error : {error.message}</p>;
@@ -100,7 +110,7 @@ const Resumes = () => {
           </ContentContainer>
           <ElementsContainer<Experiences>
             resume={resume}
-            useBack={test}
+            useBack={experiencesBack}
             title="Expériences"
             Wrapper={ExperienceForm}
             getDefaultFormValues={() => ({
@@ -121,7 +131,36 @@ const Resumes = () => {
             elementKey="experience"
             elementsKey="experiences"
           />
-          <ContentContainer title={`Knowledge`}></ContentContainer>
+          <ElementsContainer<Knowledge>
+            resume={resume}
+            useBack={knowLedgeBack}
+            title="Knowledge"
+            Wrapper={KnowledgeForm}
+            getDefaultFormValues={() => ({
+              type: '',
+              title: '',
+              order: '',
+            })}
+            labelKey="title"
+            elementKey="knowledge"
+            elementsKey="knowledge"
+          />
+          <ElementsContainer<Formations>
+            resume={resume}
+            useBack={formationBack}
+            title="Formations"
+            Wrapper={FormationForm}
+            getDefaultFormValues={() => ({
+              title: '',
+              order: '',
+              from: '',
+              to: '',
+              description: '',
+            })}
+            labelKey="title"
+            elementKey="formation"
+            elementsKey="formations"
+          />
         </>
       }
       right={<ResumePreview user={user} resume={resume}></ResumePreview>}

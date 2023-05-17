@@ -1,0 +1,11 @@
+@import '../../variables';
+
+.knowledge {
+    color: black;
+    padding-bottom: 20px;
+
+    &__title {
+        font-size: 16px;
+        font-weight: 700;
+    }
+}
