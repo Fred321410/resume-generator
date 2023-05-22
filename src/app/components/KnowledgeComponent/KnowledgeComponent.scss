@@ -4,8 +4,11 @@
     color: black;
     padding-bottom: 20px;
 
-    &__title {
+    &__type {
         font-size: 16px;
         font-weight: 700;
+    }
+    &__title {
+        font-size: 14px;
     }
 }

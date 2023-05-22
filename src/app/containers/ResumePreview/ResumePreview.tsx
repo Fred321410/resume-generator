@@ -12,7 +12,11 @@ import { useQuery } from '@apollo/client';
 import Experience from '../../components/Experience/Experience';
 import { Formations, GET_FORMATIONS } from '../../services/formations.services';
 import Formation from '../../components/Formation/Formation';
-import { GET_KNOWLEDGE, Knowledge } from '../../services/knowledge.services';
+import {
+  GET_KNOWLEDGE,
+  Knowledge,
+  KnowledgeGroup,
+} from '../../services/knowledge.services';
 import KnowledgeComponent from '../../components/KnowledgeComponent/KnowledgeComponent';
 interface ResumePreviewProps {
   user?: Users;
@@ -96,13 +100,36 @@ const ResumePreview = ({ user, resume }: ResumePreviewProps) => {
   function getKnowledgeComponents(
     knowledge: Knowledge[] | undefined
   ): JSX.Element | JSX.Element[] {
-    return knowledge ? (
-      knowledge.map((kl: Knowledge) => {
-        return <KnowledgeComponent key={kl.id} knowledge={kl} />;
-      })
-    ) : (
-      <></>
-    );
+    const knowledgeGroup = knowledge
+      ? knowledge.reduce((groups: KnowledgeGroup, kl: Knowledge) => {
+          const groupKey = kl.type;
+          const extendedgroups = Object.assign({}, groups);
+
+          if (!extendedgroups[groupKey]) {
+            extendedgroups[groupKey] = [];
+          }
+
+          extendedgroups[groupKey].push(kl);
+          return extendedgroups;
+        }, {} as KnowledgeGroup)
+      : [];
+    const knowledgeGroupArray = Object.entries(knowledgeGroup);
+    knowledgeGroupArray.sort((a, b) => {
+      const minA = a[1].reduce(
+        (min, current) => (current.order - min < 0 ? current.order : min),
+        a[1][0].order
+      );
+      const minB = b[1].reduce(
+        (min, current) => (current.order - min < 0 ? current.order : min),
+        b[1][0].order
+      );
+      return minA - minB;
+    });
+    return knowledgeGroupArray.map(([groupKey, group]) => {
+      return (
+        <KnowledgeComponent key={groupKey} type={groupKey} knowledge={group} />
+      );
+    });
   }
 
   return (

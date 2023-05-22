@@ -7,6 +7,10 @@ export interface Knowledge {
   order: string;
 }
 
+export interface KnowledgeGroup {
+  [key: string]: Knowledge[];
+}
+
 const GET_KNOWLEDGE = gql`
   query GetKnowledge($resumeId: Int) {
     knowledge(resumeId: $resumeId) {

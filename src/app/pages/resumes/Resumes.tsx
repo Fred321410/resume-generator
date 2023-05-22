@@ -111,7 +111,7 @@ const Resumes = () => {
           <ElementsContainer<Experiences>
             resume={resume}
             useBack={experiencesBack}
-            title="Expériences"
+            title="Experiences"
             Wrapper={ExperienceForm}
             getDefaultFormValues={() => ({
               poste: '',

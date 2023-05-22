@@ -9,7 +9,15 @@ interface FormationProps extends HTMLAttributes<HTMLDivElement> {
 const Formation = ({ formation }: FormationProps) => {
   return (
     <div className="formation">
-      <div className="formation__title">{formation.title}</div>
+      <div className="formation__title">
+        {formation.from}
+        {formation.to ? '-' + formation.to : ''} - {formation.title}
+      </div>
+      {formation.description ? (
+        <div className="formation__description">{formation.description}</div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

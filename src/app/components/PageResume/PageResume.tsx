@@ -71,8 +71,8 @@ const PageResume = ({
               <div className="page-resume__content__left">
                 <div className="content__left__container">
                   <div className="page-resume__title">Formations</div>
+                  {formations}
                 </div>
-                <div>{formations}</div>
               </div>
               <div className="page-resume__content__right">
                 <div className="content__right__container">
@@ -93,7 +93,7 @@ const PageResume = ({
             <div className="page-resume__content__left">
               <div className="content__left__container">
                 <div className="page-resume__title">Connaissances</div>
-                <div>{knowledge}</div>
+                {knowledge}
               </div>
             </div>
             <div className="page-resume__content__right">
