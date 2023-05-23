@@ -70,8 +70,8 @@ const PageResume = ({
             <div className="first-page__content">
               <div className="page-resume__content__left">
                 <div className="content__left__container">
-                  <div className="page-resume__title">Formations</div>
-                  {formations}
+                  <div className="page-resume__title">Connaissances</div>
+                  {knowledge}
                 </div>
               </div>
               <div className="page-resume__content__right">
@@ -92,8 +92,8 @@ const PageResume = ({
           <div className="page-resume__content">
             <div className="page-resume__content__left">
               <div className="content__left__container">
-                <div className="page-resume__title">Connaissances</div>
-                {knowledge}
+                <div className="page-resume__title">Formations</div>
+                {formations}
               </div>
             </div>
             <div className="page-resume__content__right">

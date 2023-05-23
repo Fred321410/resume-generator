@@ -38,13 +38,22 @@ const Experience = ({ experience }: ExperienceProps) => {
       <div className="experience__subtitle">
         {datesAsString} - {experience.city}
       </div>
+      {experience.esn ? (
+        <div className="experience__subtitle">Prestataire {experience.esn}</div>
+      ) : (
+        <></>
+      )}
       <div className="experience__description">{experience.description}</div>
-      <div className="experience__tools">
-        <div className="experience__tools__label">
-          Outils/technologies utilisés:
-        </div>{' '}
-        {experience.tools}
-      </div>
+      {experience.tools ? (
+        <div className="experience__tools">
+          <div className="experience__tools__label">
+            Outils/technologies utilisés:
+          </div>
+          {experience.tools}
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

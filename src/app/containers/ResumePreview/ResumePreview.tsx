@@ -61,7 +61,6 @@ const ResumePreview = ({ user, resume }: ResumePreviewProps) => {
   }, [loadingKnowledge, dataKnowledge]);
   const print = () => {
     const printContent = document.getElementById('content-to-print').innerHTML;
-    console.log(printContent);
     const originalContent = document.body.innerHTML;
     document.body.innerHTML = printContent;
     window.print();
@@ -139,7 +138,7 @@ const ResumePreview = ({ user, resume }: ResumePreviewProps) => {
         user={user}
         resume={resume}
         experiences={getExperiencesComponents(1, experiences)}
-        formations={getFormationsComponents(formations)}
+        knowledge={getKnowledgeComponents(knowledge)}
       >
         <div className="print-logo">
           <FontAwesomeIcon
@@ -151,7 +150,7 @@ const ResumePreview = ({ user, resume }: ResumePreviewProps) => {
       </PageResume>
       <PageResume
         experiences={getExperiencesComponents(2, experiences)}
-        knowledge={getKnowledgeComponents(knowledge)}
+        formations={getFormationsComponents(formations)}
       ></PageResume>
     </div>
   );
